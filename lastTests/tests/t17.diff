@@ -1,0 +1,4 @@
+1c1
+< ERROR: Undefined escape sequence 
+---
+> ERROR: Unclosed string

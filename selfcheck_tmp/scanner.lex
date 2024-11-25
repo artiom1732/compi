@@ -1,5 +1,9 @@
 %{
 #include "tokens.hpp"
+
+void my_print(){
+    printf("what\n");
+}
 %}
 
 %option noyywrap
@@ -35,8 +39,6 @@ continue     return CONTINUE;
 ,           return COMMA;
 \(           return LPAREN;
 \)           return RPAREN;
-\{          return LBRACE;
-\}          return RBRACE;
 =           return ASSIGN;
 {relop}     return RELOP;
 {binop}     return BINOP;
@@ -54,9 +56,7 @@ continue     return CONTINUE;
 [1-9][0-9]*b|0b       return NUM_B;
 [1-9][0-9]*|0         return NUM;
 
-\"              yymore();BEGIN(string);
-<string>.*\"    BEGIN(INITIAL);return STRING;
-<string>[^\"]+      BEGIN(INITIAL);return STRING;
+\".*          return STRING;
 
 
 
